@@ -1,0 +1,76 @@
+// <div class="pane_wrapper">
+//         <aside class="pane_aside"></aside>
+//         <main class="pane_main"></main>
+//         <span class="pane_trigger"></span>
+//     </div>
+
+
+body{
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    height: 100vh;
+    width: 100%;
+}
+
+.pane_wrapper{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    & > *{
+        height: 100%;
+        display: block;
+
+        overflow: auto;
+    }
+
+    & > .pane_aside{
+        width: 250px;
+        background-color: #1E1E1E;
+    }
+
+    & > .pane_main{
+        background-color: #333333;
+        width: calc(100% - 250px);
+    }
+
+    & > .pane_trigger{
+        width: 4px;
+        position: absolute;
+        top: 0;
+        left: calc(250px - 2px);
+
+        background-color: #4c4c4c;
+        cursor: ew-resize;
+
+        &::after{
+            position: absolute;
+            top: 0;
+            left: -5px;
+
+            width: calc(100% + 10px);
+            height: 100%;
+
+            background-color: #bababa00;
+            content: "";
+
+            display: block;
+        }
+
+        &.active{
+            background-color: #007ACC;
+        }
+    }
+}
